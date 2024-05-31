@@ -1,0 +1,11 @@
+{
+    "os2iot": {
+        "base_url": "https://os2iot-backend.SERVERNAME/api/v1/",
+        "api-key": "xx"
+    },
+    "sms2go": {
+        "gatewayid": "12345",
+        "bearer": "xx",
+        "recipient": "\"+45xxxxxxxx\""
+    }
+}
