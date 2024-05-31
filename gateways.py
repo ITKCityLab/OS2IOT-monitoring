@@ -19,7 +19,7 @@ for item in responsejson['result']:
   if not "offline" in item['name'].casefold():
     timenotseen = datetime.now().astimezone() - datetime.fromisoformat(item['lastSeenAt'].replace('Z', '+00:00'))
     if timenotseen.seconds > 3600:
-      textmessage += item['name'] + ": Last seen on " + item['lastSeenAt'][0:16] + "\r\n"
+      textmessage += item['name'] + " - " + item['description'] + ":\r\nLast seen on " + item['lastSeenAt'][0:16] + "\r\n\r\n"
 
 if textmessage != "":
-   sms2go_response = requests.request("POST", sms2go_url, headers={"Content-Type": "application/json", "Authorization": "Bearer " + json_settings['sms2go']['bearer']}, allow_redirects=True, data="{\"body\":\"" + textmessage + "\",\"to\":["+json_settings['sms2go']['recipient']+"]}")
+  sms2go_response = requests.request("POST", sms2go_url, headers={"Content-Type": "application/json", "Authorization": "Bearer " + json_settings['sms2go']['bearer']}, allow_redirects=True, data="{\"body\":\"" + textmessage.encode(encoding="ASCII",errors="ignore").decode() + "\",\"to\":["+json_settings['sms2go']['recipient']+"]}")

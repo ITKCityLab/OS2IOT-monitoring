@@ -8,6 +8,10 @@
 # License
  This work is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
+# Documentation
+* [SMS2Go API](https://pushapi.ecmr.biz/docs/)
+
+
 Good luck!
 
 - Kristian Risager Larsen, [IoT Lab, Aarhus Kommune](https://iot.aarhus.dk)
