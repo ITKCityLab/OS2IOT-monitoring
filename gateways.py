@@ -14,7 +14,7 @@ response = requests.request("GET", os2iot_url, headers={"x-api-key": json_settin
 
 responsejson = json.loads(response.text)
 
-for item in responsejson['result']:
+for item in responsejson['resultList']:
   
   if not "offline" in item['name'].casefold():
     timenotseen = datetime.now().astimezone() - datetime.fromisoformat(item['lastSeenAt'].replace('Z', '+00:00'))
@@ -23,3 +23,6 @@ for item in responsejson['result']:
 
 if textmessage != "":
   sms2go_response = requests.request("POST", sms2go_url, headers={"Content-Type": "application/json", "Authorization": "Bearer " + json_settings['sms2go']['bearer']}, allow_redirects=True, data="{\"body\":\"" + textmessage.encode(encoding="ASCII",errors="ignore").decode() + "\",\"to\":["+json_settings['sms2go']['recipient']+"]}")
+  print(textmessage)
+else:
+  print("All gateways are online")
